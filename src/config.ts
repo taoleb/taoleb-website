@@ -1,16 +1,16 @@
 export default {
   // 网站标题
-  Title: '韩小韩博客',
+  Title: 'taoleb的个人网站',
   // 网站地址
-  Site: 'https://www.vvhan.com',
+  Site: 'https://www.taoleb.tech',
   // 网站副标题
   Subtitle: '不曾与你分享的时间,我在进步.',
   // 网站描述
-  Description: '韩小韩博客 专注于前开发与相关技术的实战分享，涵盖Vue框架、Node.js、Serverless等，并涉及Node、Python、Linux、Docker等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
+  Description: 'taoleb的博客 专注于前沿科技信息与日常哲思分享，包括AI、科技、哲学、生活、音乐和旅行的热爱。',
   // 网站作者
-  Author: '.𝙃𝙖𝙣',
+  Author: 'taoleb',
   // 作者头像
-  Avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640',
+  Avatar: '/assets/images/Avatar.PNG',
   // 网站座右铭
   Motto: '运气是计划之外的东西.',
   // Cover 网站缩略图
