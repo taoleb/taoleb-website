@@ -12,6 +12,18 @@ import Comment from "@/components/Comment/Comment.astro";
 import "./ToolLayout.less";
 // 文章内容基础样式
 import "@/styles/ArticleBase.less";
+// 博客分享页面样式
+if (frontmatter.type === 'blogshare') {
+	await import("@/styles/BlogShare.less");
+}
+// 项目分享页面样式
+if (frontmatter.type === 'projects') {
+	await import("@/styles/Projects.less");
+}
+// 哲学页面样式
+if (frontmatter.type === 'philosophy') {
+	await import("@/styles/Philosophy.less");
+}
 ---
 
 <Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"}>
@@ -21,7 +33,20 @@ import "@/styles/ArticleBase.less";
 			<p>{frontmatter.desc}</p>
 		</header>
 		<main><slot /></main>
-		<main class={`${frontmatter.type}-main main`}><section class="vh-space-loading"><span></span><span></span><span></span></section></main>
+		<main class={`${frontmatter.type}-main main`}>
+			{frontmatter.type === 'blogshare' && 
+				<div class="vh-blogshare-container"></div>
+			}
+			{frontmatter.type === 'projects' && 
+				<div class="vh-projects-container"></div>
+			}
+			{frontmatter.type === 'philosophy' && 
+				<div class="vh-philosophy-container"></div>
+			}
+			{frontmatter.type !== 'blogshare' && frontmatter.type !== 'projects' && frontmatter.type !== 'philosophy' && 
+				<section class="vh-space-loading"><span></span><span></span><span></span></section>
+			}
+		</main>
 		{checkComment() && frontmatter.comment != false && <Comment />}
 	</section>
 </Layout>

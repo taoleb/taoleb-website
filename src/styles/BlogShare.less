@@ -1,0 +1,418 @@
+/* 博客分享页面 - 后现代主义风格 */
+.vh-blogshare-container {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vh-blogshare-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* 分类筛选器 */
+.vh-blogshare-filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.vh-filter-btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--vh-main-radius);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: var(--vh-font-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--vh-main-color) 0%, #00a693 100%);
+    color: white;
+    border-color: var(--vh-main-color);
+    transform: scale(1.05);
+  }
+}
+
+/* 特色文章区域 */
+.vh-blogshare-featured {
+  margin-bottom: 3rem;
+}
+
+.vh-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vh-font-color);
+  margin-bottom: 2rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--vh-main-color), transparent);
+    margin-left: 1rem;
+  }
+}
+
+.vh-title-icon {
+  font-size: 1.5rem;
+}
+
+.vh-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+}
+
+/* 特色文章卡片 */
+.vh-featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background: white;
+  border-radius: var(--vh-main-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(1,196,182,0.03) 0%, rgba(0,166,147,0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .vh-featured-image img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.vh-featured-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--vh-main-radius);
+  
+  img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+}
+
+.vh-featured-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.vh-category-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.vh-featured-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vh-featured-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.vh-featured-title {
+  margin: 0 0 1rem 0;
+  
+  a {
+    color: var(--vh-font-color);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--vh-main-color);
+    }
+  }
+}
+
+.vh-featured-desc {
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.vh-featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 文章网格 */
+.vh-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* 普通文章卡片 */
+.vh-post-card {
+  background: white;
+  border-radius: var(--vh-main-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    
+    .vh-post-image img {
+      transform: scale(1.05);
+    }
+  }
+  
+  &:nth-child(even) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  }
+}
+
+.vh-post-image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.vh-post-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.vh-category-badge {
+  padding: 0.4rem 0.8rem;
+  background: var(--vh-main-color);
+  color: white;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vh-post-content {
+  padding: 1.5rem;
+}
+
+.vh-post-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.vh-post-title {
+  margin: 0 0 1rem 0;
+  
+  a {
+    color: var(--vh-font-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--vh-main-color);
+    }
+  }
+}
+
+.vh-post-desc {
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vh-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* 标签样式 */
+.vh-tag {
+  padding: 0.3rem 0.6rem;
+  background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+  color: var(--vh-font-color);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, var(--vh-main-color) 0%, #00a693 100%);
+    color: white;
+    transform: scale(1.05);
+  }
+}
+
+/* 文章链接样式 */
+.vh-article-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+  z-index: 10;
+  position: relative;
+  
+  &:hover {
+    color: var(--vh-main-color);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--vh-main-color);
+    outline-offset: 2px;
+  }
+}
+
+/* 卡片动画 */
+.vh-card-show {
+  animation: cardSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .vh-blogshare-container {
+    padding: 1rem;
+  }
+  
+  .vh-featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .vh-featured-card {
+    grid-template-columns: 1fr;
+    
+    .vh-featured-image {
+      height: 200px;
+    }
+  }
+  
+  .vh-posts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .vh-blogshare-filters {
+    gap: 0.5rem;
+    
+    .vh-filter-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  .vh-section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vh-featured-content,
+  .vh-post-content {
+    padding: 1rem;
+  }
+  
+  .vh-featured-title a {
+    font-size: 1.1rem;
+  }
+  
+  .vh-post-title a {
+    font-size: 1rem;
+  }
+}

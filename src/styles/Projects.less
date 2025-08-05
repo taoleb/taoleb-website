@@ -1,0 +1,228 @@
+// 项目分享页面样式
+.projects-main {
+  .vh-projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+    
+    .project-card {
+      position: relative;
+      background: var(--vh-white-color);
+      border-radius: var(--vh-main-radius);
+      box-shadow: var(--vh-box-shadow);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--vh-border-color);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .project-content {
+        padding: 1.25rem;
+        position: relative;
+
+        .project-featured {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          background: var(--vh-main-color);
+          color: var(--vh-white-color);
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.25rem;
+          font-size: 0.75rem;
+          font-weight: 600;
+          z-index: 1;
+        }
+
+        .project-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          gap: 1rem;
+
+          .project-title {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            h3 {
+              margin: 0;
+              font-size: 1.125rem;
+              font-weight: 700;
+              color: var(--vh-font-color);
+              line-height: 1.3;
+            }
+
+            .project-author {
+              font-size: 0.8rem;
+              color: var(--vh-font-66);
+              background: var(--vh-bg-color);
+              padding: 0.2rem 0.4rem;
+              border-radius: 0.2rem;
+              width: fit-content;
+            }
+          }
+
+          .project-stats {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--vh-font-66);
+
+            .project-stars {
+              display: flex;
+              align-items: center;
+              gap: 0.2rem;
+
+              &::before {
+                content: "⭐";
+                font-size: 0.7rem;
+              }
+            }
+
+            .project-language {
+              display: flex;
+              align-items: center;
+              gap: 0.2rem;
+
+              &::before {
+                content: "📝";
+                font-size: 0.7rem;
+              }
+            }
+          }
+        }
+
+        .project-description {
+          font-size: 0.9rem;
+          line-height: 1.5;
+          color: var(--vh-font-color);
+          margin-bottom: 1rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .project-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          margin-bottom: 1.25rem;
+
+          .tag {
+            background: var(--vh-main-color-88);
+            color: var(--vh-white-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.2rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+          }
+        }
+
+        .project-actions {
+          display: flex;
+          gap: 0.6rem;
+
+          .btn {
+            flex: 1;
+            padding: 0.6rem 0.8rem;
+            border-radius: 0.4rem;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+
+            &.btn-primary {
+              background: var(--vh-main-color);
+              color: var(--vh-white-color);
+
+              &:hover {
+                background: var(--vh-main-color-88);
+                transform: translateY(-1px);
+              }
+
+              &::before {
+                content: "🚀";
+                font-size: 0.7rem;
+              }
+            }
+
+            &.btn-secondary {
+              background: transparent;
+              color: var(--vh-font-color);
+              border: 1px solid var(--vh-border-color);
+
+              &:hover {
+                background: var(--vh-bg-color);
+                border-color: var(--vh-main-color);
+                color: var(--vh-main-color);
+              }
+
+              &::before {
+                content: "📂";
+                font-size: 0.7rem;
+              }
+            }
+          }
+        }
+
+        .project-footer {
+          margin-top: 0.8rem;
+          padding-top: 0.8rem;
+          border-top: 1px solid var(--vh-border-color);
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: 0.7rem;
+          color: var(--vh-font-66);
+
+          .project-license {
+            &::before {
+              content: "📄 ";
+              font-size: 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media screen and (max-width: 768px) {
+  .projects-main {
+    .vh-projects-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .projects-main {
+    .vh-projects-container {
+      .project-card {
+        .project-content {
+          padding: 1rem;
+
+          .project-actions {
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,39 +4,25 @@ export default {
   // api 为空则使用 data 静态数据
   data: [
     {
-      "title": "Astro 中使用 Lenis 增加鼠标滚动阻尼感",
-      "auther": "韩小韩博客",
-      "date": "2025-03-06",
-      "link": "https://www.vvhan.com/article/Lenis-in-Astro",
-      "content": "在移动端触控交互中，惯性滚动带来的丝滑体验已成为标配，但鼠标滚轮受限于机械结构，滚动时难免产生生硬的段落感。如何让传统滚轮操作也能获得如触控板般的阻尼反馈？Lenis库通过JavaScript模拟惯性算法，成功将”物理惯性”引入网页滚动，本文将解析其实现原理与实战应用。核心技术原理​滚轮事件拦截与目"
+      "title": "如何构建生产级Prompt？这四个阶段的工程化方法论值得收藏（by 火山Meetup复盘）",
+      "auther": "甲木",
+      "date": "2025-08-04",
+      "link": "https://mp.weixin.qq.com/s/3EiOt_W9wsIuNP5vQQcfzQ",
+      "content": "本文讨论了作者参加火山引擎AI创新巡展的经历，分享了发布会关于模型选择、Prompt编写及构建投产等内容，介绍了相关产品和工具"
     },
     {
-      "title": "一组手机和电脑动态壁纸分享【分享】",
-      "auther": "韩小韩博客",
-      "date": "2025-03-05",
-      "link": "https://www.vvhan.com/article/pc-mobile-video-wallpaper",
-      "content": "本文精选一组电脑及手机动态壁纸，让你的设备秒变沉浸式视觉盛宴。壁纸下载壁纸下载壁纸下载"
+      "title": "2025年中盘点：Anthropic登顶，开源失速，企业只买最贵的？",
+      "auther": "薛定谔的爆米花",
+      "date": "2025-08-02",
+      "link": "https://mp.weixin.qq.com/s/GDy7kYUivC2cI3stZP1kRg?from=singlemessage&isappinstalled=0&scene=1&clicktime=1754141615&enterid=1754141615",
+      "content": "基础模型不仅在推动生成式AI的发展，也在塑造未来的计算格局。随着其能力和经济效益的演进，构建于其上的系统、应用和行业也将随之变革。"
     },
     {
-      "title": "Astro 添加 Twikoo 评论组件",
-      "auther": "韩小韩博客",
-      "date": "2025-03-03",
-      "link": "https://www.vvhan.com/article/astro-twikoo",
-      "content": "Astro在使用视图过渡路由时，在跳转路由时，会导致JS文件只有在第一次进入页面时生效，所以Astro在使用视图过渡路由下Twikoo时无法正常使用的，我是单独写了一个评论组件，对Twikoo进行动态加载，然后在需要评论的页面引入的。创建Twikoo评论组件&lt;!--Comment.astr"
-    },
-    {
-      "title": "Astro主题-优雅的vhAstro-Theme【使用文档】",
-      "auther": "韩小韩博客",
-      "date": "2025-03-02",
-      "link": "https://www.vvhan.com/article/astro-theme-vhastro-theme",
-      "content": "🥝从Z-Blog到Emlog，从Typecho到Hexo，从动态博客到静态博客，作为一个前端，我深入了解了多种SSG工具，如Hexo、Vitepress、Hugo等，并最终锁定了Astro作为重构博客的选择。🍇Astro活跃的社区支持、广泛的现代框架兼容性、高效的性能优化、优秀的开发体验以及原生"
-    },
-    {
-      "title": "Fetch的GET、POST简单HTTP请求封装",
-      "auther": "韩小韩博客",
-      "date": "2025-02-24",
-      "link": "https://www.vvhan.com/article/fetch-get-post",
-      "content": "在现代Web开发中，FetchAPI已经可以完全替代Ajax，是处理HTTP请求的利器，且支持异步操作和Promise链式调用。本文将详细介绍如何使用FetchAPI封装GET和POST请求。通过封装，代码可复用性更高，逻辑更清晰，同时还能简化错误处理和请求配置，大大提升开发效率和代码质量。GET请"
+      "title": "Anthropic联合创始人：AI的“扩展法则”与通往人类级智能的可预测之路 ",
+      "auther": "天空之城城主",
+      "date": "2025-08-01",
+      "link": "https://mp.weixin.qq.com/s/Zg2v3A9_NF3k33FeiV3ubw",
+      "content": "本文讨论了Anthropic联合创始人贾里德•卡普兰在YC的AI创业学院最新研究访谈中，对AI“扩展法则”及通往人类级智能可预测之路的见解。关键要点包括：扩展法则推动AI进步、任务时间跨度不断延伸、解锁人类级AI的要素、人类在人机交互中的角色、物理学训练的帮助。"
     }
   ]
 }

@@ -27,6 +27,12 @@ import initLinks from "@/scripts/Links";
 import initFriends from "@/scripts/Friends";
 // 动态说说初始化
 import initTalking from "@/scripts/Talking";
+// 博客分享初始化
+import BlogShare from "@/scripts/BlogShare";
+// 项目分享初始化
+import { initProjects, destroyProjects } from "@/scripts/Projects";
+// 哲学分享初始化
+import { initPhilosophy, destroyPhilosophy } from "@/scripts/Philosophy";
 // 文章评论初始化
 import { checkComment, commentInit } from "@/scripts/Comment";
 // 移动端侧边栏初始化
@@ -46,6 +52,8 @@ import SmoothScroll from "@/scripts/Smoothscroll";
 const videoList: any[] = [];
 const MusicList: any[] = [];
 let commentLIst: any = { walineInit: null };
+let blogShareInstance: BlogShare | null = null;
+
 const indexInit = async (only: boolean = true) => {
   // 初始化网站运行时间
   only && initWebSiteTime();
@@ -71,6 +79,19 @@ const indexInit = async (only: boolean = true) => {
   initFriends();
   // 动态说说初始化
   initTalking();
+  // 博客分享初始化
+  if (document.querySelector('.vh-blogshare-container')) {
+    blogShareInstance = new BlogShare();
+    blogShareInstance.init();
+  }
+  // 项目分享初始化
+  if (document.querySelector('.vh-projects-container')) {
+    initProjects();
+  }
+  // 哲学分享初始化
+  if (document.querySelector('.vh-philosophy-container')) {
+    initPhilosophy();
+  }
   // Google 广告
   GoogleAdInit();
   // 谷歌 SEO 推送
@@ -107,6 +128,10 @@ export default () => {
     // 销毁音乐
     MusicList.forEach((i: any) => i.destroy());
     MusicList.length = 0;
+    // 销毁项目实例
+    destroyProjects();
+    // 销毁哲学实例
+    destroyPhilosophy();
   });
   console.log("%c🌻 程序：Astro | 主题：vhAstro-Theme | 作者：Han | Github：https://github.com/uxiaohan/vhAstro-Theme 🌻", "color:#fff; background: linear-gradient(270deg, #18d7d3, #68b7dd, #8695e6, #986fee); padding: 8px 15px; border-radius: 8px");
   console.log("%c\u521D\u59CB\u5316\u5B8C\u6BD5.", "color: #ffffff; background: #000; padding:5px");

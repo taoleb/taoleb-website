@@ -23,7 +23,7 @@ export default {
     "I am making progress in the time I haven't shared with you.",
   ],
   // 网站创建时间
-  CreateTime: '2021-09-01',
+  CreateTime: '2025-08-03',
   // 顶部 Banner 配置
   HomeBanner: {
     enable: true,
@@ -52,19 +52,19 @@ export default {
   Navs: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG
-    { text: '朋友', link: '/links', icon: 'Nav_friends' },
+    { text: '博客', link: '/blogshare', icon: 'Nav_friends' },
     { text: '圈子', link: '/friends', icon: 'Nav_rss' },
     { text: '动态', link: '/talking', icon: 'Nav_talking' },
     { text: '昔日', link: '/archives', icon: 'Nav_archives' },
-    { text: '留言', link: '/message', icon: 'Nav_message' },
+    { text: '项目', link: '/projects', icon: 'Nav_message' },
     { text: '关于', link: '/about', icon: 'Nav_about' },
-    { text: 'API', link: 'https://api.vvhan.com/', target: true, icon: 'Nav_link' },
+    { text: '我的哲思', link: '/philosophy', icon: 'Nav_link' },
   ],
   // 侧边栏个人网站
   WebSites: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG
-    { text: 'Github', link: 'https://github.com/uxiaohan', icon: 'WebSite_github' },
+    { text: 'Github', link: 'https://github.com/taoleb', icon: 'WebSite_github' },
     { text: '韩小韩API', link: 'https://api.vvhan.com', icon: 'WebSite_api' },
     { text: '每日热榜', link: 'https://hot.vvhan.com', icon: 'WebSite_hot' },
     { text: '骤雨重山图床', link: 'https://wp-cdn.4ce.cn', icon: 'WebSite_img' },

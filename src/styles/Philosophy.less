@@ -1,0 +1,238 @@
+// 哲学页面样式
+.philosophy-main {
+  .vh-philosophy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    
+    .philosophy-intro {
+      background: var(--vh-white-color);
+      border-radius: var(--vh-main-radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--vh-box-shadow);
+      border: 1px solid var(--vh-border-color);
+      
+      h2 {
+        color: var(--vh-main-color);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      
+      p {
+        line-height: 1.8;
+        color: var(--vh-font-color);
+        margin-bottom: 1rem;
+      }
+      
+      .philosophy-quote {
+        background: var(--vh-bg-color);
+        border-left: 4px solid var(--vh-main-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+        
+        blockquote {
+          margin: 0;
+          font-style: italic;
+          color: var(--vh-font-66);
+        }
+      }
+    }
+    
+    .philosophy-articles {
+      display: grid;
+      gap: 1.5rem;
+      
+      .article-card {
+        background: var(--vh-white-color);
+        border-radius: var(--vh-main-radius);
+        box-shadow: var(--vh-box-shadow);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--vh-border-color);
+        
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .article-cover {
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+          
+          &:hover img {
+            transform: scale(1.05);
+          }
+        }
+        
+        .article-header {
+          padding: 1.5rem 1.5rem 1rem;
+          border-bottom: 1px solid var(--vh-border-color);
+          
+          h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--vh-font-color);
+          }
+          
+          .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--vh-font-66);
+            
+            .article-date {
+              &::before {
+                content: "📅 ";
+              }
+            }
+            
+            .article-category {
+              background: var(--vh-main-color-88);
+              color: var(--vh-white-color);
+              padding: 0.2rem 0.5rem;
+              border-radius: 0.25rem;
+              font-size: 0.75rem;
+            }
+          }
+        }
+        
+        .article-content {
+          padding: 1rem 1.5rem 1.5rem;
+          
+          .article-excerpt {
+            color: var(--vh-font-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          
+          .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            
+            .tag {
+              background: var(--vh-bg-color);
+              color: var(--vh-font-color);
+              padding: 0.2rem 0.5rem;
+              border-radius: 0.25rem;
+              font-size: 0.75rem;
+              border: 1px solid var(--vh-border-color);
+            }
+          }
+          
+          .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--vh-main-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            
+            &:hover {
+              text-decoration: underline;
+            }
+            
+            &::after {
+              content: "→";
+              transition: transform 0.3s ease;
+            }
+            
+            &:hover::after {
+              transform: translateX(3px);
+            }
+          }
+        }
+      }
+    }
+    
+    .philosophy-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--vh-font-66);
+      
+      .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+      
+      h3 {
+        margin-bottom: 0.5rem;
+        color: var(--vh-font-color);
+      }
+      
+      p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .add-article-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--vh-main-color);
+        color: var(--vh-white-color);
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: var(--vh-main-color-88);
+          transform: translateY(-2px);
+        }
+        
+        &::before {
+          content: "✍️";
+        }
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media screen and (max-width: 768px) {
+  .philosophy-main {
+    .vh-philosophy-container {
+      padding: 1rem;
+      
+      .philosophy-intro {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .philosophy-articles {
+        gap: 1rem;
+        
+        .article-card {
+          .article-header {
+            padding: 1rem 1rem 0.75rem;
+          }
+          
+          .article-content {
+            padding: 0.75rem 1rem 1rem;
+          }
+        }
+      }
+    }
+  }
+} 
