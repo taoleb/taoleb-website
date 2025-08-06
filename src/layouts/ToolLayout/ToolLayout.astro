@@ -24,6 +24,10 @@ if (frontmatter.type === 'projects') {
 if (frontmatter.type === 'philosophy') {
 	await import("@/styles/Philosophy.less");
 }
+// 信息动态页面样式
+if (frontmatter.type === 'talking') {
+	await import("@/styles/InfoDynamic.less");
+}
 ---
 
 <Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"}>
@@ -43,7 +47,10 @@ if (frontmatter.type === 'philosophy') {
 			{frontmatter.type === 'philosophy' && 
 				<div class="vh-philosophy-container"></div>
 			}
-			{frontmatter.type !== 'blogshare' && frontmatter.type !== 'projects' && frontmatter.type !== 'philosophy' && 
+			{frontmatter.type === 'talking' && 
+				<div class="vh-info-dynamic-container"></div>
+			}
+			{frontmatter.type !== 'blogshare' && frontmatter.type !== 'projects' && frontmatter.type !== 'philosophy' && frontmatter.type !== 'talking' && 
 				<section class="vh-space-loading"><span></span><span></span><span></span></section>
 			}
 		</main>
