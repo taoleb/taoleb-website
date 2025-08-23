@@ -25,8 +25,7 @@ import initWebSiteTime from "@/scripts/Footer";
 import initLinks from "@/scripts/Links";
 // 朋友圈 RSS 初始化
 import initFriends from "@/scripts/Friends";
-// 动态说说初始化
-import initTalking from "@/scripts/Talking";
+// 动态说说初始化已移除
 // 博客分享初始化
 import BlogShare from "@/scripts/BlogShare";
 // 项目分享初始化
@@ -39,8 +38,7 @@ import { checkComment, commentInit } from "@/scripts/Comment";
 import initMobileSidebar from "@/scripts/MobileSidebar";
 // Google 广告
 import GoogleAdInit from "@/scripts/GoogleAd";
-// Han Analytics 统计
-import HanAnalyticsInit from "@/scripts/HanAnalytics";
+// Han Analytics 统计已移除
 //  谷歌 SEO 推送
 import SeoPushInit from "@/scripts/SeoPush";
 // SmoothScroll 滚动优化
@@ -77,8 +75,7 @@ const indexInit = async (only: boolean = true) => {
   initLinks();
   // 朋友圈 RSS 初始化
   initFriends();
-  // 动态说说初始化
-  initTalking();
+  // 动态说说初始化已移除
   // 博客分享初始化
   if (document.querySelector('.vh-blogshare-container')) {
     blogShareInstance = new BlogShare();
@@ -98,8 +95,7 @@ const indexInit = async (only: boolean = true) => {
   SeoPushInit();
   // 文章评论初始化
   checkComment() && commentInit(checkComment(), commentLIst)
-  // Han Analytics 统计
-  HanAnalyticsInit();
+  // Han Analytics 统计已移除
   // 打字效果
   only && TypeWriteInit();
   // 泡泡🫧效果

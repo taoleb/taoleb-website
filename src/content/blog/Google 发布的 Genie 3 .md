@@ -3,14 +3,12 @@ id: "Google发布的Genie3能从文字或图片即时生成可玩的3D互动世�
 title: "Google 发布的 Genie 3 能从文字或图片即时生成可玩的 3D 互动世界"
 description: "Google发布的Genie 3能从文字或图片即时生成可玩的3D互动世界，支持实时交互、720p画质、24fps帧率"
 date: 2025-08-06
-pubDate: 2025-08-06
-updatedDate: 2025-08-06
 cover: "https://wp-cdn.4ce.cn/v2/bpOe0kA.jpeg"
 heroImage: "https://wp-cdn.4ce.cn/v2/bpOe0kA.jpeg"
 categories: "AI技术"
 tags: ["Google", "Genie 3", "3D生成", "AI", "世界模型", "DeepMind"]
 recommend: true
-top: true
+top: false
 hide: false
 ---
 

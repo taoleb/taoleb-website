@@ -31,7 +31,7 @@ const description = post.body.substring(0, 200) + '...';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} - 信息动态</title>
   <meta name="description" content={description}>
-  <link rel="stylesheet" href="/assets/css/index.css">
+  
   <style>
     .info-detail-container {
       max-width: 800px;
@@ -179,10 +179,12 @@ const description = post.body.substring(0, 200) + '...';
     
     {post.data.cover && (
       <img 
-        src={post.data.cover} 
+        src={post.data.cover}
         alt={post.data.title}
         class="info-detail-cover"
         loading="lazy"
+        referrerpolicy="no-referrer"
+        onerror="this.onerror=null;this.src='/assets/images/lazy-loading.webp'"
       />
     )}
     
@@ -196,7 +198,7 @@ const description = post.body.substring(0, 200) + '...';
       ))}
     </div>
     
-    <a href="/talking" class="info-detail-back">
+    <a href="/" class="info-detail-back">
       ← 返回动态列表
     </a>
   </div>

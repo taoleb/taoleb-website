@@ -52,7 +52,6 @@ export default {
   Navs: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG
-    { text: '动态', link: '/talking', icon: 'Nav_talking' },
     { text: '博客', link: '/blogshare', icon: 'Nav_friends' },
     { text: '圈子', link: '/friends', icon: 'Nav_rss' },
     { text: '昔日', link: '/archives', icon: 'Nav_archives' },
@@ -62,18 +61,12 @@ export default {
   ],
   // 侧边栏个人网站
   WebSites: [
-    // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
-    // 建议使用 https://tabler.io/icons 直接下载 SVG
-    { text: 'Github', link: 'https://github.com/taoleb', icon: 'WebSite_github' },
-    { text: '韩小韩API', link: 'https://api.vvhan.com', icon: 'WebSite_api' },
-    { text: '每日热榜', link: 'https://hot.vvhan.com', icon: 'WebSite_hot' },
-    { text: '骤雨重山图床', link: 'https://wp-cdn.4ce.cn', icon: 'WebSite_img' },
-    { text: 'HanAnalytics', link: 'https://analytics.vvhan.com', icon: 'WebSite_analytics' },
+    // 个人网站链接已移除
   ],
   // 侧边栏展示
   AsideShow: {
     // 是否展示个人网站
-    WebSitesShow: true,
+    WebSitesShow: false,
     // 是否展示分类
     CategoriesShow: true,
     // 是否展示标签
@@ -85,10 +78,7 @@ export default {
   DNSOptimization: [
     'https://i0.wp.com',
     'https://cn.cravatar.com',
-    'https://analytics.vvhan.com',
-    'https://vh-api.4ce.cn',
-    'https://registry.npmmirror.com',
-    'https://pagead2.googlesyndication.com'
+    'https://registry.npmmirror.com'
   ],
   // 博客音乐组件解析接口
   vhMusicApi: 'https://vh-api.4ce.cn/blog/meting',
@@ -106,7 +96,7 @@ export default {
     }
   },
   // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
-  HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
+  HanAnalytics: { enable: false, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
   // Google 广告
   GoogleAds: {
     ad_Client: '', //ca-pub-xxxxxx
