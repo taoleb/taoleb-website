@@ -1,8 +1,8 @@
 export default (arr: Array<any>) => {
-  const index = arr.findIndex((item: any) => item.data.top === true);
-  if (index !== -1) {
-    const [item] = arr.splice(index, 1);
-    arr.unshift(item);
-  }
-  return arr;
+  // 找到所有置顶文章
+  const topItems = arr.filter(item => item.data.top === true);
+  const nonTopItems = arr.filter(item => item.data.top !== true);
+  
+  // 将置顶文章放在最前面，其他文章保持原有顺序
+  return [...topItems, ...nonTopItems];
 }

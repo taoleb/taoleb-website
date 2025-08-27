@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import moveTopToFirst from "@/utils/moveTopToFirst";
+import SITE_CONFIG from "@/config";
+import Layout from "@/layouts/Layout/Layout.astro";
+import ArticleCard from "@/components/ArticleCard/ArticleCard.astro";
+
+// 定义个人博客文章的ID列表
+const personalBlogIds = [
+	"autonomous-driving-vlm-analysis", // 自动驾驶视觉语言模型VLM工作分析
+	"2025-agi-predictions" // 2025年AGI核心预测
+];
+
+// 获取所有博客文章
+const allPosts = await getCollection("blog");
+// 只获取个人博客文章
+const personalPosts = allPosts.filter(post => 
+	personalBlogIds.includes(String(post.data.id)) && !post.data.hide
+);
+// 按日期排序
+const sortedPosts = personalPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+// 应用置顶逻辑
+const finalPosts = moveTopToFirst(sortedPosts);
+
+const { Title, Description } = SITE_CONFIG;
+---
+
+<Layout title="博客分享" description={Description} activeNav="blogshare">
+	<section class="vh-tools-main vh-animation vh-animation-init">
+		<header class="vh-page-header">
+			<h1>我的原创博客 ✍️</h1>
+			<p>分享我的技术思考、产业洞察与哲学思辨</p>
+		</header>
+		<main class="article-list-main">
+			<section class="article-list">
+				<!-- 文章列表 -->
+				{finalPosts.map((post, index) => <ArticleCard post={post} index={index} />)}
+			</section>
+		</main>
+	</section>
+</Layout>

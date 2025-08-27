@@ -1,24 +1,39 @@
 ---
-import { getTagsList } from "@/utils/getArchive";
 import { getCollection } from "astro:content";
+import moveTopToFirst from "@/utils/moveTopToFirst";
 export async function getStaticPaths(): Promise<any> {
 	const posts = await getCollection("blog");
 	let tagList: any = [];
 	posts.forEach(post => (tagList = [...tagList, ...(post.data.tags || [])]));
 	return [...new Set(tagList)].map(tags => ({ params: { tags } }));
 }
-// 获取分类列表
+// 获取标签下的文章
 const { tags } = Astro.params;
-const articleList = await getTagsList(tags);
+const allPosts = await getCollection("blog");
+const tagPosts = allPosts.filter(post => post.data.tags && post.data.tags.includes(tags) && !post.data.hide);
+const sortedPosts = tagPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const finalPosts = moveTopToFirst(sortedPosts);
+
 // 页面 Info
 import SITE_CONFIG from "@/config";
 const { Description } = SITE_CONFIG;
 // 公共 Layout
 import Layout from "@/layouts/Layout/Layout.astro";
-// 文章列表组件
-import Archive from "@/components/Archive/Archive.astro";
+// 文章卡片组件
+import ArticleCard from "@/components/ArticleCard/ArticleCard.astro";
 ---
 
 <Layout title={`标签 ${tags} 下的文章`} description={Description}>
-	<Archive articleList={articleList} />
+	<section class="vh-tools-main vh-animation vh-animation-init">
+		<header class="vh-page-header">
+			<h1>标签：{tags} 🏷️</h1>
+			<p>共 {finalPosts.length} 篇文章</p>
+		</header>
+		<main class="article-list-main">
+			<section class="article-list">
+				<!-- 文章列表 -->
+				{finalPosts.map((post, index) => <ArticleCard post={post} index={index} />)}
+			</section>
+		</main>
+	</section>
 </Layout>

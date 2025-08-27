@@ -1,0 +1,439 @@
+---
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+
+// 分离置顶文章和普通文章
+const topPosts = posts.filter(post => post.data.top);
+const regularPosts = posts.filter(post => !post.data.top);
+
+// 获取所有分类
+const categories = [...new Set(posts.map(post => post.data.categories))];
+---
+
+<div class="vh-blogshare-container">
+  <div class="vh-blogshare-content">
+    <!-- 分类筛选器 -->
+    <div class="vh-blogshare-filters">
+      <button class="vh-filter-btn active" data-category="all">全部</button>
+      {categories.map(cat => (
+        <button class="vh-filter-btn" data-category={cat}>{cat}</button>
+      ))}
+    </div>
+    
+    <!-- 置顶文章区域 -->
+    {topPosts.length > 0 && (
+      <div class="vh-blogshare-featured">
+        <h2 class="vh-section-title">
+          <span class="vh-title-icon">📌</span>
+          置顶文章
+        </h2>
+        <div class="vh-featured-grid">
+          {topPosts.map(post => (
+            <article class="vh-featured-card" data-category={post.data.categories} data-link={post.url}>
+              <div class="vh-featured-image">
+                <img src={post.data.cover || "/assets/images/default-cover.jpg"} alt={post.data.title} loading="lazy">
+                <div class="vh-featured-overlay">
+                  <span class="vh-category-tag">{post.data.categories}</span>
+                </div>
+              </div>
+              <div class="vh-featured-content">
+                <div class="vh-featured-meta">
+                  <time class="vh-post-date">{post.data.date}</time>
+                  {post.data.readTime && <span class="vh-read-time">{post.data.readTime}</span>}
+                </div>
+                <h3 class="vh-featured-title">
+                  <a href={post.url} class="vh-article-link">{post.data.title}</a>
+                </h3>
+                {post.data.description && <p class="vh-featured-desc">{post.data.description}</p>}
+                <div class="vh-featured-tags">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="vh-tag">#{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    <!-- 普通文章网格 -->
+    <div class="vh-blogshare-grid">
+      <h2 class="vh-section-title">
+        <span class="vh-title-icon">📚</span>
+        技术文章
+      </h2>
+      <div class="vh-posts-grid">
+        {regularPosts.map(post => (
+          <article class="vh-post-card" data-category={post.data.categories} data-link={post.url}>
+            <div class="vh-post-image">
+              <img src={post.data.cover || "/assets/images/default-cover.jpg"} alt={post.data.title} loading="lazy">
+              <div class="vh-post-overlay">
+                <span class="vh-category-badge">{post.data.categories}</span>
+              </div>
+            </div>
+            <div class="vh-post-content">
+              <div class="vh-post-meta">
+                <time class="vh-post-date">{post.data.date}</time>
+                {post.data.readTime && <span class="vh-read-time">{post.data.readTime}</span>}
+              </div>
+              <h3 class="vh-post-title">
+                <a href={post.url} class="vh-article-link">{post.data.title}</a>
+              </h3>
+              {post.data.description && <p class="vh-post-desc">{post.data.description}</p>}
+              <div class="vh-post-tags">
+                {post.data.tags.map((tag: string) => (
+                  <span class="vh-tag">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 分类筛选功能
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.vh-filter-btn');
+    const allCards = document.querySelectorAll('.vh-post-card, .vh-featured-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const category = target.dataset.category;
+        
+        // 更新按钮状态
+        filterBtns.forEach(b => b.classList.remove('active'));
+        target.classList.add('active');
+        
+        // 筛选文章
+        allCards.forEach(card => {
+          const cardElement = card as HTMLElement;
+          if (category === 'all' || cardElement.dataset.category === category) {
+            cardElement.style.display = 'block';
+            cardElement.classList.add('vh-card-show');
+          } else {
+            cardElement.style.display = 'none';
+            cardElement.classList.remove('vh-card-show');
+          }
+        });
+      });
+    });
+    
+    // 文章卡片点击事件
+    allCards.forEach(card => {
+      // 鼠标悬浮效果
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('vh-card-hover');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('vh-card-hover');
+      });
+      
+      // 卡片点击跳转
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'A' || target.closest('a')) {
+          return;
+        }
+        
+        const cardElement = card as HTMLElement;
+        const link = cardElement.dataset.link;
+        if (link) {
+          window.location.href = link;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* 博客分享页面样式 */
+  .vh-blogshare-container {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .vh-blogshare-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  /* 分类筛选器 */
+  .vh-blogshare-filters {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .vh-filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 0.88rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #34495e;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .vh-filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .vh-filter-btn.active {
+    background: linear-gradient(135deg, #01C4B6 0%, #00a693 100%);
+    color: white;
+    border-color: #01C4B6;
+    transform: scale(1.05);
+  }
+  
+  /* 置顶文章区域 */
+  .vh-blogshare-featured {
+    margin-bottom: 3rem;
+  }
+  
+  .vh-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #34495e;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .vh-section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #01C4B6, transparent);
+    margin-left: 1rem;
+  }
+  
+  .vh-title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .vh-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+  }
+  
+  /* 特色文章卡片 */
+  .vh-featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .vh-featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+  
+  .vh-featured-image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .vh-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .vh-featured-card:hover .vh-featured-image img {
+    transform: scale(1.05);
+  }
+  
+  .vh-featured-overlay {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  .vh-category-tag {
+    background: rgba(1, 196, 182, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .vh-featured-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .vh-featured-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .vh-featured-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  
+  .vh-featured-title a {
+    color: #34495e;
+    text-decoration: none;
+  }
+  
+  .vh-featured-desc {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .vh-featured-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .vh-tag {
+    background: #f8f9fa;
+    color: #666;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  /* 文章网格 */
+  .vh-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  /* 普通文章卡片 */
+  .vh-post-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .vh-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+  
+  .vh-post-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .vh-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .vh-post-card:hover .vh-post-image img {
+    transform: scale(1.05);
+  }
+  
+  .vh-post-overlay {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  .vh-category-badge {
+    background: rgba(1, 196, 182, 0.9);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .vh-post-content {
+    padding: 1.5rem;
+  }
+  
+  .vh-post-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .vh-post-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .vh-post-title a {
+    color: #34495e;
+    text-decoration: none;
+  }
+  
+  .vh-post-desc {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .vh-post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .vh-featured-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .vh-featured-card {
+      grid-template-columns: 1fr;
+    }
+    
+    .vh-posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -51,6 +51,18 @@ export default {
       recommend: true,
       top: true,
       link: '/info-dynamic/wrc-2025-beijing'
+    },
+    {
+      id: 'info-005',
+      title: '谷歌nano banana正式上线：单图成本不到3毛钱，比OpenAI便宜95%',
+      date: '2025-01-27',
+      categories: 'AI技术',
+      tags: ['谷歌', 'AI图像生成', 'Gemini', 'nano-banana', '图像编辑', '成本优势'],
+      cover: 'https://wp-cdn.4ce.cn/v2/4SOuhj7.jpeg',
+      content: '谷歌神秘的图像生成与编辑模型nano banana终于正式上线，正式命名为gemini-2.5-flash-image-preview，具有SOTA的图像生成能力、惊人的角色一致性和闪电般的速度。',
+      recommend: true,
+      top: true,
+      link: '/article/谷歌nano-banana正式上线-单图成本不到3毛钱-比OpenAI便宜95'
     }
   ]
 }

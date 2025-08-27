@@ -7,12 +7,12 @@ export async function getStaticPaths(options: GetStaticPathsOptions) {
 	const { paginate } = options;
 	const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 	// 置顶文章功能
-	moveTopToFirst(posts);
+	const postsWithTop = moveTopToFirst(posts);
 	// 生成 Search JSON 文件
-	await setSearchJson(posts);
+	await setSearchJson(postsWithTop);
 	// 隐藏的文章不显示
 	return paginate(
-		posts.filter(i => !i.data.hide),
+		postsWithTop.filter(i => !i.data.hide),
 		{ pageSize: 15 }
 	);
 }
