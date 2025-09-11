@@ -7,7 +7,7 @@ pubDate: "2025-08-27"
 updatedDate: "2025-08-27"
 categories: "AI技术"
 tags: ["谷歌", "AI图像生成", "Gemini", "nano-banana", "图像编辑"]
-cover: ""
+cover: "https://wp-cdn.4ce.cn/v2/Am9Xvyb.jpeg"
 heroImage: ""
 recommend: true
 top: false
