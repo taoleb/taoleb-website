@@ -265,8 +265,56 @@ export default {
       cover: '/assets/images/day.jpeg',
       content: '今日AI行业重磅动态：Chrome自2008年来最大更新集成Gemini AI，Notion 3.0引入Agent功能实现自主工作，腾讯发布混元3D Studio整合全流程，阿里开源动作生成模型，奥特曼押注逆龄大脑药物，AI原生应用时代全面到来。',
       recommend: true,
-      top: true,
+      top: false,
       link: '/article/daily-ai-news-september-22-2025'
+    },
+    {
+      id: 'info-023',
+      title: '每日AI新闻速递-9月23日：联发科天玑9500芯片发布，谷歌革新Agent思考范式，OpenAI算力投入创新高',
+      date: '2025-09-23',
+      categories: 'AI技术',
+      tags: ['AI新闻', '联发科', '天玑9500', '谷歌', 'Deep Research', 'OpenAI', '算力', '可灵AI', '美团', '百度', 'DeepSeek', '芯片', 'Agent'],
+      cover: '/assets/images/banner/ai-news-banner.webp',
+      content: '今日AI行业重磅动态：联发科发布天玑9500旗舰AI芯片，NPU性能提升111%；谷歌开源Deep Research框架突破传统Agent模式；OpenAI计划投入3500亿美元算力；可灵AI 2.5视频模型实现动作戏突破；美团、百度、DeepSeek模型技术全面升级。',
+      recommend: true,
+      top: false,
+      link: '/article/daily-ai-news-september-23-2025'
+    },
+    {
+      id: 'info-024',
+      title: '每日AI新闻速递-9月24日：英伟达千亿投资OpenAI，阿里开源全模态大模型，具身智能迎来重大突破',
+      date: '2025-09-24',
+      categories: 'AI技术',
+      tags: ['AI新闻', '英伟达', 'OpenAI', '阿里', 'Qwen3-Omni', '智元机器人', 'GO-1', '具身智能', 'MiniCPM-V', '清华', '无问芯穹', 'Kimi', 'Agent'],
+      cover: '/assets/images/day.jpeg',
+      content: '今日AI行业重磅动态：英伟达官宣向OpenAI投资1000亿美元打造AI巨兽，阿里开源原生多模态模型Qwen3-Omni对标闭源强模型，智元机器人GO-1通用具身基座大模型全面开源，清华MiniCPM-V 4.5以8B参数硬刚72B大模型，AI基础设施进入Agent时代。',
+      recommend: true,
+      top: false,
+      link: '/article/daily-ai-news-september-24-2025'
+    },
+    {
+      id: 'info-025',
+      title: '每日AI新闻速递-9月25日：谷歌Mixboard重新定义AI画板，通义万相2.5音画同步突破，可灵2.5成本暴降30%',
+      date: '2025-09-25',
+      categories: 'AI技术',
+      tags: ['AI新闻', '谷歌', 'Nano Banana', 'Mixboard', '通义万相', '可灵', '秘塔AI', 'Suno', 'AR游戏', '机器人技术', 'Sam Altman'],
+      cover: 'https://wp-cdn.4ce.cn/v2/8u71qCz.png',
+      content: '本周AI领域重磅更新：谷歌发布首款Nano Banana官方应用Mixboard开启AI画板新时代，阿里通义万相Wan2.5实现音画同步视频生成，快手可灵2.5 Turbo成本暴降30%效果飞跃，秘塔AI推出Agentic Search边想边搜边做，Suno V5模型达到录音室级音质。',
+      recommend: true,
+      top: true,
+      link: '/article/daily-ai-news-september-25-2025'
+    },
+    {
+      id: 'info-026',
+      title: '阿里云栖大会模型七连发：通义千问3-Max超越GPT-5，全模态AI生态全面升级',
+      date: '2025-09-25',
+      categories: 'AI技术',
+      tags: ['阿里', '云栖大会', '通义千问', 'Qwen3-Max', 'Qwen3-VL', 'Qwen3-Omni', '大模型', '开源', '多模态', 'AGI'],
+      cover: 'https://wp-cdn.4ce.cn/v2/8u71qCz.png',
+      content: '阿里云栖大会重磅发布七款新模型，通义千问Qwen3-Max性能跻身全球第三超越GPT-5，Qwen3-Next架构创新效率提升10倍，Qwen3-VL视觉理解达到SOTA水平，Qwen3-Omni全模态开源填补空白，构建从0.5B到480B全尺寸AI生态。',
+      recommend: true,
+      top: true,
+      link: '/article/alibaba-yunqi-conference-model-releases-2025'
     }
   ]
 }
