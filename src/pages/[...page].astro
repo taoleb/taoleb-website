@@ -5,16 +5,17 @@ import setSearchJson from "@/utils/vhSearch";
 import moveTopToFirst from "@/utils/moveTopToFirst";
 export async function getStaticPaths(options: GetStaticPathsOptions) {
 	const { paginate } = options;
-	const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-	// 置顶文章功能
-	const postsWithTop = moveTopToFirst(posts);
-	// 生成 Search JSON 文件
-	await setSearchJson(postsWithTop);
-	// 隐藏的文章不显示
-	return paginate(
-		postsWithTop.filter(i => !i.data.hide),
-		{ pageSize: 15 }
+	// Ensure proper date sorting: frontmatter uses string dates
+	const posts = (await getCollection("blog")).sort(
+		(a, b) => new Date(b.data.date as any).getTime() - new Date(a.data.date as any).getTime()
 	);
+
+	// 置顶文章功能
+	const filter_posts = posts.filter((i) => !i.data.hide);
+	const move_top_posts = moveTopToFirst(filter_posts);
+	await setSearchJson(move_top_posts);
+	// 隐藏的文章不显示
+	return paginate(move_top_posts, { pageSize: 15 });
 }
 
 const { page } = Astro.props;

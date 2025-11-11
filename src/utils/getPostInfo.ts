@@ -1,5 +1,8 @@
 import { getCollection } from "astro:content";
-const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+// Sort by date correctly when date is a string in frontmatter
+const posts = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.date as any).getTime() - new Date(a.data.date as any).getTime()
+);
 // 获取文章分类
 const getCategories = () => {
   const categoriesList = posts.reduce((acc: any, i: any) => {

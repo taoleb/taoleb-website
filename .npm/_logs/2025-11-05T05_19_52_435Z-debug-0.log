@@ -1,0 +1,18 @@
+0 verbose cli /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v23.7.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/apple/Documents/cursor/MyWebsite/taoleb_space/.npmrc
+5 silly config load:file:/opt/homebrew/etc/npmrc
+6 verbose title npm exec netlify deploy --dir=dist --prod
+7 verbose argv "exec" "--" "netlify" "deploy" "--dir=dist" "--prod"
+8 verbose logfile logs-max:10 dir:/Users/apple/Documents/cursor/MyWebsite/taoleb_space/.npm/_logs/2025-11-05T05_19_52_435Z-
+9 verbose logfile /Users/apple/Documents/cursor/MyWebsite/taoleb_space/.npm/_logs/2025-11-05T05_19_52_435Z-debug-0.log
+10 silly logfile done cleaning log files
+11 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with EPERM
+12 verbose cwd /Users/apple/Documents/cursor/MyWebsite/taoleb_space
+13 verbose os Darwin 24.6.0
+14 verbose node v23.7.0
+15 verbose npm  v10.9.2
+16 verbose exit 1
+17 verbose code 1
